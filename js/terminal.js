@@ -1,38 +1,57 @@
-const mySkills = [
-    { name: "Python", tech: "Django, Automation", percent: 90, color: "green", speed: 800, delay: 0.5 }, 
-    { name: "C#", tech: "Game Logic, .NET", percent: 85, color: "green", speed: 2200, delay: 1.5 }, 
-    { name: "Cloud & DevOps", tech: "Docker, MariaDB, Sphinx", percent: 70, color: "cyan", speed: 3000, delay: 2.5 },
-    { name: "Web Dev", tech: "HTML5, CSS3", percent: 65, color: "yellow", speed: 1000, delay: 3.5 }
-];
+document.addEventListener('DOMContentLoaded', () => {
+    const triggerBtn = document.querySelector('.trigger-skills');
+    const terminalSection = document.getElementById('skills-terminal');
+    const output = document.getElementById('skills-output');
+    const typewriter = document.querySelector('.typewriter');
 
-document.querySelector('.trigger-skills').addEventListener('click', function(e) {
-    e.preventDefault();
-    const terminalContainer = document.getElementById('skills-terminal');
-    const skillsOutput = document.getElementById('skills-output');
-    
-    terminalContainer.style.display = "block";
-    skillsOutput.innerHTML = ""; 
+    // Skill data based on your core tech stack
+    const skills = [
+        { label: 'Python / Advanced Logic', level: '90%', color: 'green' },
+        { label: 'C# / Game Mechanics', level: '85%', color: 'green' },
+        { label: 'Django / Web Engines', level: '80%', color: 'yellow' },
+        { label: 'Docker / MariaDB', level: '75%', color: 'cyan' },
+        { label: 'HTML5 / CSS3', level: '95%', color: 'cyan' }
+    ];
 
-    mySkills.forEach((skill) => {
-        const skillDiv = document.createElement('div');
-        skillDiv.className = `skill-bar ${skill.color}`;
-        skillDiv.style.animationDelay = `${skill.delay}s`; 
+    if (triggerBtn) {
+        triggerBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // 1. Show the terminal window
+            terminalSection.style.display = 'block';
+            terminalSection.scrollIntoView({ behavior: 'smooth' });
 
-        skillDiv.innerHTML = `
-            <div class="skill-label" style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                <span>> ${skill.name} <small style="color:#666">(${skill.tech})</small></span>
-                <span>${skill.percent}%</span>
-            </div>
-            <div class="bar-background">
-                <div class="bar-fill" style="width:0%; transition: width ${skill.speed}ms ease-in-out;"></div>
-            </div>
-        `;
-        
-        skillsOutput.appendChild(skillDiv);
+            // 2. Clear previous output if re-clicked
+            output.innerHTML = '';
 
+            // 3. Start the sequence
+            startTerminalSequence();
+        });
+    }
+
+    function startTerminalSequence() {
+        // Wait for the typewriter animation to "finish" visually
         setTimeout(() => {
-            const fill = skillDiv.querySelector('.bar-fill');
-            fill.style.width = skill.percent + "%";
-        }, (skill.delay * 1000) + 100);
-    });
+            renderSkills();
+        }, 1500);
+    }
+
+    function renderSkills() {
+        skills.forEach((skill, index) => {
+            setTimeout(() => {
+                const skillHtml = `
+                    <div class="skill-bar ${skill.color}">
+                        <div class="skill-label">
+                            <span>${skill.label}</span>
+                            <span>${skill.level}</span>
+                        </div>
+                        <div class="bar-background">
+                            <div class="bar-fill" style="width: ${skill.level}"></div>
+                        </div>
+                    </div>
+                `;
+                output.insertAdjacentHTML('beforeend', skillHtml);
+            }, index * 400); // Staggered entry for each bar
+        });
+    }
 });
