@@ -25,11 +25,10 @@
                     <p>
                         Junior Software Developer focusing on Python, C#, and web technologies. 
                         Passionate about building clean code and interactive experiences. 
-                        Always eager to learn and grow through impactful projects.
                     </p>
                     <div class="links">
                         <a href="https://github.com/YoelKoen" class="btn" target="_blank">GITHUB</a>
-                        <a href="https://www.linkedin.com/in/yoel-koen-21a365398/" class="btn" target="_blank">LINKEDIN</a>
+                        <a href="#skills-terminal" class="btn trigger-skills">VIEW SKILLS</a>
                     </div>
                 </div>
 
@@ -37,9 +36,25 @@
                     <h2>EDUCATION</h2>
                     <p>
                         <strong>HyperionDev</strong> — Software Development Bootcamp<br>
-                        <strong>National Senior Certificate</strong> — Computer Science & Mathematics focus
+                        <strong>National Senior Certificate</strong> — CS & Maths focus
                     </p>
                 </section>
+            </div>
+        </section>
+
+        <section id="skills-terminal" class="terminal-container" style="display: none;">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <span class="control red"></span>
+                    <span class="control yellow"></span>
+                    <span class="control green"></span>
+                    <span class="terminal-title">yoelkoen@dev-portfolio: ~</span>
+                </div>
+                <div class="terminal-body">
+                    <p class="typewriter">> loading skills ...</p>
+                    <div id="skills-output" class="hidden-content">
+                        </div>
+                </div>
             </div>
         </section>
 
@@ -50,24 +65,18 @@
         <section class="projects-grid">
             <div class="project-card">
                 <h3>NEWS ENGINE</h3>
-                <p>
-                    A full-stack content management platform built with <strong>Django</strong>. 
-                    Features include MariaDB integration, automated documentation with Sphinx, 
-                    and Docker containerization for easy deployment.
-                </p>
+                <p>A full-stack content management platform built with <strong>Django</strong>. MariaDB, Sphinx, and Docker.</p>
                 <a href="https://github.com/YoelKoen/capstone-consolidation" class="btn-small" target="_blank">VIEW PROJECT</a>
             </div>
 
             <div class="project-card">
                 <h3>STICKY NOTES</h3>
-                <p>
-                    A dynamic web application built with <strong>Django</strong> that allows users to create, 
-                    organize, and manage digital notes. Focused on clean UI and efficient backend data handling.
-                </p>
+                <p>A dynamic <strong>Django</strong> application for note management. Focused on clean UI and data handling.</p>
                 <a href="https://github.com/YoelKoen/sticky-notes-project" class="btn-small" target="_blank">VIEW PROJECT</a>
             </div>
         </section>
     </main>
 
+    <script src="js/terminal.js"></script>
 </body>
 </html>
