@@ -1,7 +1,8 @@
 const mySkills = [
-    { name: "Backend Development", tech: "Python, Django, MariaDB", percent: 85, color: "green" },
-    { name: "Frontend Design", tech: "HTML5, CSS3, JavaScript", percent: 75, color: "yellow" },
-    { name: "DevOps & Tools", tech: "Docker, Git, Sphinx", percent: 65, color: "cyan" }
+    { name: "Python", tech: "Django, Tkinter, Automation", percent: 90, color: "green" },
+    { name: "C#", tech: "Game Logic, .NET, Core Mechanics", percent: 85, color: "green" },
+    { name: "Web Dev", tech: "HTML5, CSS3, JavaScript", percent: 75, color: "yellow" },
+    { name: "Cloud", tech: "Docker, MariaDB, Sphinx", percent: 70, color: "cyan" }
 ];
 
 document.querySelector('.trigger-skills').addEventListener('click', function(e) {
@@ -15,11 +16,12 @@ document.querySelector('.trigger-skills').addEventListener('click', function(e) 
     mySkills.forEach((skill, index) => {
         const skillDiv = document.createElement('div');
         skillDiv.className = `skill-bar ${skill.color}`;
-        skillDiv.style.animationDelay = `${(index * 0.3) + 1}s`; 
+        // Slight delay for each bar to create a "loading" sequence
+        skillDiv.style.animationDelay = `${(index * 0.25) + 0.8}s`; 
 
         skillDiv.innerHTML = `
             <div class="skill-label">
-                <span>> ${skill.name} <span style="color: #666; font-weight: normal;">[${skill.tech}]</span></span>
+                <span>> ${skill.name} <span style="color: #666; font-size: 0.85em;">(${skill.tech})</span></span>
                 <span class="bar-percent">${skill.percent}%</span>
             </div>
             <div class="bar-background">
@@ -32,6 +34,6 @@ document.querySelector('.trigger-skills').addEventListener('click', function(e) 
         setTimeout(() => {
             const fill = skillDiv.querySelector('.bar-fill');
             fill.style.width = skill.percent + "%";
-        }, (index * 300) + 1200);
+        }, (index * 250) + 1000);
     });
 });

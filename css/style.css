@@ -68,7 +68,7 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
 .btn:hover { background-color: #000; color: #fff; }
 
 /* =========================================
-   REFINED TERMINAL V2
+   REFINED TERMINAL V2 (INDIVIDUAL LINES)
    ========================================= */
 .terminal-container {
     max-width: 900px;
@@ -78,7 +78,7 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
 
 .terminal-window {
     background-color: #0d0d0d;
-    border: 3px solid #000; /* Matching project card borders */
+    border: 3px solid #000;
     border-radius: 8px;
     box-shadow: 20px 20px 0px rgba(0,0,0,0.1);
     overflow: hidden;
@@ -87,7 +87,7 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
     position: relative;
 }
 
-/* Scanline Effect */
+/* Retro CRT Effect */
 .terminal-window::before {
     content: " ";
     display: block;
@@ -116,6 +116,7 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
 .terminal-body {
     padding: 30px;
     background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 100%);
+    min-height: 300px;
 }
 
 .typewriter {
@@ -125,13 +126,19 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
     width: 0;
     animation: typing 2s steps(30, end) forwards, blink-caret .75s step-end infinite;
     color: #00ff41;
+    margin-bottom: 20px;
 }
 
 @keyframes typing { from { width: 0 } to { width: 100% } }
 @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #00ff41; } }
 
-/* Skill Bars */
-.skill-bar { margin-bottom: 25px; opacity: 0; animation: fadeIn 0.5s forwards; }
+/* Individual Skill Bars */
+.skill-bar { 
+    margin-bottom: 25px; 
+    opacity: 0; 
+    animation: fadeIn 0.5s forwards; 
+}
+
 @keyframes fadeIn { to { opacity: 1; } }
 
 .skill-label {
@@ -139,12 +146,14 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .bar-background {
     background-color: #262626;
-    height: 8px;
+    height: 8px; /* Sleek individual lines */
     border-radius: 4px;
     width: 100%;
     overflow: hidden;
@@ -183,4 +192,26 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
     padding: 30px;
     background-color: #fff;
     box-shadow: 10px 10px 0px #000;
+}
+
+.btn-small {
+    display: inline-block;
+    border: 2px solid #000;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: 0.2s;
+}
+
+.btn-small:hover { background-color: #000; color: #fff; }
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+    .hero { flex-direction: column; align-items: center; text-align: center; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .tag.bottom { margin-left: 0; }
 }
