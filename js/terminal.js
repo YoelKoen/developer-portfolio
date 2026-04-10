@@ -8,8 +8,8 @@ const mySkills = [
     // Cloud & Tools: Moderate speed (1500ms)
     { name: "Cloud & DevOps", tech: "Docker, MariaDB, Sphinx", percent: 70, color: "cyan", speed: 1500, delay: 2.2 },
 
-    // Frontend: Fast snap-in (1000ms)
-    { name: "Frontend", tech: "HTML5, CSS3", percent: 65, color: "yellow", speed: 1000, delay: 3.0 }
+    // Web Development: Fast snap-in (1000ms)
+    { name: "Web Dev", tech: "HTML5, CSS3", percent: 65, color: "yellow", speed: 1000, delay: 3.0 }
 ];
 
 document.querySelector('.trigger-skills').addEventListener('click', function(e) {
@@ -24,7 +24,7 @@ document.querySelector('.trigger-skills').addEventListener('click', function(e) 
         const skillDiv = document.createElement('div');
         skillDiv.className = `skill-bar ${skill.color}`;
         
-        // Rows appear at different times based on their specific delay
+        // Staggered arrival based on individual delay
         skillDiv.style.animationDelay = `${skill.delay}s`; 
 
         skillDiv.innerHTML = `
@@ -39,7 +39,7 @@ document.querySelector('.trigger-skills').addEventListener('click', function(e) 
         
         skillsOutput.appendChild(skillDiv);
 
-        // This starts the bar filling after the row fades in
+        // Fill the bar after the row has faded in
         setTimeout(() => {
             const fill = skillDiv.querySelector('.bar-fill');
             fill.style.width = skill.percent + "%";
