@@ -1,27 +1,65 @@
 /* =========================================
    BASE STYLES & LAYOUT
    ========================================= */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #e2ede4;
+    background-color: #e2ede4; /* Light sage brutalist background */
     font-family: 'Arial Black', Gadget, sans-serif;
     margin: 0;
-    padding: 40px;
+    padding: 0;
     color: #1a1a1a;
-    scroll-behavior: smooth;
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 40px 20px;
 }
 
 /* =========================================
-   HERO SECTION
+   TOP NAVIGATION
+   ========================================= */
+.top-nav {
+    position: sticky;
+    top: 0;
+    background-color: #e2ede4;
+    padding: 20px 0;
+    border-bottom: 4px solid #000;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    z-index: 1000;
+}
+
+.top-nav a {
+    font-family: 'Arial Black', sans-serif;
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    transition: 0.2s ease;
+}
+
+.top-nav a:hover {
+    color: #00ff41; /* Terminal Green highlight */
+    transform: translateY(-2px);
+}
+
+section {
+    scroll-margin-top: 100px; /* Prevents nav from covering titles */
+}
+
+/* =========================================
+   HERO SECTION (BRUTALIST)
    ========================================= */
 .hero {
     display: flex;
     align-items: flex-start;
     gap: 60px;
+    margin-top: 60px;
     margin-bottom: 60px;
 }
 
@@ -31,7 +69,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     border: 6px solid #000;
-    filter: sepia(100%) hue-rotate(90deg) saturate(150%);
+    filter: sepia(100%) hue-rotate(90deg) saturate(150%); /* Cyan/Green tint */
 }
 
 .tag {
@@ -48,7 +86,13 @@ body {
 .tag.bottom { margin-left: 30px; }
 
 h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
-h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: inline-block; text-transform: uppercase;}
+h2 { 
+    font-size: 2rem; 
+    margin-top: 30px; 
+    border-bottom: 4px solid #000; 
+    display: inline-block; 
+    text-transform: uppercase;
+}
 
 .links { margin: 25px 0; }
 
@@ -68,12 +112,11 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
 .btn:hover { background-color: #000; color: #fff; }
 
 /* =========================================
-   REFINED TERMINAL V2 (INDIVIDUAL LINES)
+   REFINED TERMINAL V2
    ========================================= */
 .terminal-container {
     max-width: 900px;
     margin: 50px auto;
-    padding: 0 20px;
 }
 
 .terminal-window {
@@ -83,7 +126,7 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
     box-shadow: 20px 20px 0px rgba(0,0,0,0.1);
     overflow: hidden;
     color: #e0e0e0;
-    font-family: 'Fira Code', 'Courier New', monospace;
+    font-family: 'Courier New', monospace;
     position: relative;
 }
 
@@ -113,24 +156,13 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
 .yellow { background-color: #ffbd2e; }
 .green { background-color: #27c93f; }
 
-.terminal-body {
-    padding: 30px;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 100%);
-    min-height: 300px;
-}
+.terminal-body { padding: 30px; min-height: 250px; }
 
 .typewriter {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #00ff41;
-    width: 0;
-    animation: typing 2s steps(30, end) forwards, blink-caret .75s step-end infinite;
     color: #00ff41;
     margin-bottom: 20px;
+    font-weight: bold;
 }
-
-@keyframes typing { from { width: 0 } to { width: 100% } }
-@keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #00ff41; } }
 
 /* Individual Skill Bars */
 .skill-bar { 
@@ -141,19 +173,9 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
 
 @keyframes fadeIn { to { opacity: 1; } }
 
-.skill-label {
-    font-size: 14px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
 .bar-background {
     background-color: #262626;
-    height: 8px; /* Sleek individual lines */
+    height: 8px;
     border-radius: 4px;
     width: 100%;
     overflow: hidden;
@@ -162,7 +184,7 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
 .bar-fill {
     height: 100%;
     width: 0;
-    transition: width 2s cubic-bezier(0.1, 0, 0.1, 1);
+    transition: width 2s ease-in-out;
     box-shadow: 0 0 10px currentColor;
 }
 
@@ -192,6 +214,12 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
     padding: 30px;
     background-color: #fff;
     box-shadow: 10px 10px 0px #000;
+    transition: transform 0.2s;
+}
+
+.project-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px #000;
 }
 
 .btn-small {
@@ -214,129 +242,5 @@ h2 { font-size: 2rem; margin-top: 30px; border-bottom: 3px solid #000; display: 
     .hero { flex-direction: column; align-items: center; text-align: center; }
     .projects-grid { grid-template-columns: 1fr; }
     .tag.bottom { margin-left: 0; }
-}
-
-/* =========================================
-   STICKY RIGHT NAVIGATION
-   ========================================= */
-.side-nav {
-    position: fixed;
-    right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    z-index: 1000;
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.nav-item {
-    font-family: 'Arial Black', sans-serif;
-    font-size: 1.8rem;
-    color: #1a1a1a;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.3s;
-    text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
-}
-
-.nav-item:hover {
-    color: #00ff41; /* Using your terminal green for hover */
-    transform: translateX(-10px);
-}
-
-.nav-line {
-    width: 6px;
-    height: 120px;
-    background-color: #000;
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
-}
-
-/* Hide on small screens to prevent overlap */
-@media (max-width: 1100px) {
-    .side-nav {
-        position: relative;
-        top: 0;
-        right: 0;
-        transform: none;
-        flex-direction: row;
-        justify-content: center;
-        margin-bottom: 40px;
-    }
-    .nav-links { flex-direction: row; }
-    .nav-line { display: none; }
-}
-html {
-    scroll-behavior: smooth;
-}
-
-/* =========================================
-   STICKY RIGHT NAVIGATION
-   ========================================= */
-.side-nav {
-    position: fixed; /* Keeps it on screen while scrolling */
-    right: 50px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    z-index: 1000;
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.nav-item {
-    font-family: 'Arial Black', sans-serif;
-    font-size: 1.6rem;
-    color: #1a1a1a;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.nav-item:hover {
-    color: #00ff41; /* Matches your terminal green */
-    transform: translateX(-15px); /* Slides out when hovered */
-}
-
-.nav-line {
-    width: 8px;
-    height: 150px;
-    background-color: #000;
-    box-shadow: 6px 6px 0px rgba(0,0,0,0.1);
-}
-
-/* Ensure sections have enough padding for smooth jumping */
-section {
-    padding-top: 100px;
-    scroll-margin-top: 50px;
-}
-
-/* Mobile adjustments */
-@media (max-width: 1100px) {
-    .side-nav {
-        position: relative;
-        top: 0;
-        right: 0;
-        transform: none;
-        flex-direction: row;
-        justify-content: center;
-        padding: 20px 0;
-        margin-bottom: 30px;
-    }
-    .nav-links { flex-direction: row; margin-bottom: 0; }
-    .nav-line { display: none; }
+    .top-nav { gap: 20px; }
 }
