@@ -1,15 +1,15 @@
 const mySkills = [
-    // This one pops in almost instantly
+    // Python: Very fast load (800ms)
     { name: "Python", tech: "Django, Tkinter, Automation", percent: 90, color: "green", speed: 800, delay: 0.5 }, 
     
-    // This one takes a bit longer to "initialize"
+    // C#: Takes longer to "initialize" (2000ms)
     { name: "C#", tech: "Game Logic, .NET, Mechanics", percent: 85, color: "green", speed: 2000, delay: 1.2 }, 
     
-    // Quick load
-    { name: "Web Dev", tech: "HTML5, CSS3, JS", percent: 75, color: "yellow", speed: 1200, delay: 2.0 }, 
-    
-    // This one "struggles" to load (slowest)
-    { name: "Cloud", tech: "Docker, MariaDB, Sphinx", percent: 70, color: "cyan", speed: 3000, delay: 2.8 } 
+    // Cloud & Tools: Moderate speed (1500ms)
+    { name: "Cloud & DevOps", tech: "Docker, MariaDB, Sphinx", percent: 70, color: "cyan", speed: 1500, delay: 2.2 },
+
+    // Frontend: Fast snap-in (1000ms)
+    { name: "Frontend", tech: "HTML5, CSS3", percent: 65, color: "yellow", speed: 1000, delay: 3.0 }
 ];
 
 document.querySelector('.trigger-skills').addEventListener('click', function(e) {
@@ -24,7 +24,7 @@ document.querySelector('.trigger-skills').addEventListener('click', function(e) 
         const skillDiv = document.createElement('div');
         skillDiv.className = `skill-bar ${skill.color}`;
         
-        // Use the custom delay for the row to appear
+        // Rows appear at different times based on their specific delay
         skillDiv.style.animationDelay = `${skill.delay}s`; 
 
         skillDiv.innerHTML = `
@@ -39,7 +39,7 @@ document.querySelector('.trigger-skills').addEventListener('click', function(e) 
         
         skillsOutput.appendChild(skillDiv);
 
-        // Trigger the fill animation after the row has faded in
+        // This starts the bar filling after the row fades in
         setTimeout(() => {
             const fill = skillDiv.querySelector('.bar-fill');
             fill.style.width = skill.percent + "%";
