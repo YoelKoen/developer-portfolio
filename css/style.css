@@ -1,247 +1,125 @@
 /* =========================================
    1. BASE STYLES & LAYOUT
    ========================================= */
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-    background-color: #e2ede4; /* Light sage brutalist background */
+    background-color: #e2ede4;
     font-family: 'Arial Black', Gadget, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #1a1a1a;
+    margin: 0; padding: 0; color: #1a1a1a;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
 /* =========================================
    2. TOP NAVIGATION
    ========================================= */
 .top-nav {
-    position: sticky;
-    top: 0;
-    background-color: #e2ede4;
-    padding: 25px 0;
-    border-bottom: 5px solid #000; /* Heavy Brutalist border */
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    z-index: 1000;
+    position: sticky; top: 0; background-color: #e2ede4;
+    padding: 25px 0; border-bottom: 5px solid #000;
+    display: flex; justify-content: center; gap: 60px; z-index: 1000;
 }
 
 .top-nav a {
-    text-decoration: none;
-    color: #000;
-    text-transform: uppercase;
-    font-size: 1.2rem;
+    text-decoration: none; color: #000;
+    text-transform: uppercase; font-size: 1.2rem;
     transition: 0.2s ease;
 }
 
-.top-nav a:hover {
-    color: #00e5ff; /* Cyber Blue Hover */
-    transform: translateY(-3px);
-}
+.top-nav a:hover { color: #00e5ff; transform: translateY(-3px); }
 
-/* KILL SWITCH: Fixes navigation bugs */
-.side-nav, .nav-line, .nav-links {
-    display: none !important;
-}
+/* KILL SWITCH for unused nav elements */
+.side-nav, .nav-line, .nav-links { display: none !important; }
 
 /* =========================================
-   3. HERO & EDUCATION SECTION
+   3. HERO & EDUCATION
    ========================================= */
-.hero {
-    display: flex;
-    align-items: flex-start;
-    gap: 60px;
-    margin-top: 60px;
-    margin-bottom: 60px;
-}
+.hero { display: flex; align-items: flex-start; gap: 60px; margin-top: 60px; }
 
 .profile-img {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 6px solid #000;
-    /* Adjusted for Blue tint to match terminal */
+    width: 280px; height: 280px; border-radius: 50%;
+    object-fit: cover; border: 6px solid #000;
     filter: sepia(100%) hue-rotate(180deg) saturate(150%);
 }
 
 .tag {
-    background-color: #000;
-    color: #fff;
-    display: inline-block;
-    padding: 5px 20px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+    background-color: #000; color: #fff;
+    padding: 5px 20px; font-size: 1.8rem; display: inline-block;
 }
-
 .tag.bottom { margin-left: 30px; }
 
-h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
-
-.education {
-    margin-top: 45px;
-}
-
+.education { margin-top: 45px; }
 .education h2 { 
-    font-size: 2rem; 
-    border-bottom: 4px solid #000; 
-    display: inline-block; 
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
-.education p {
-    font-size: 1.25rem;
-    line-height: 1.6;
+    font-size: 2rem; border-bottom: 4px solid #000; 
+    display: inline-block; margin-bottom: 15px; 
 }
 
 /* =========================================
-   4. PURE CSS TERMINAL (NO JS)
+   4. PURE CSS TERMINAL (HIDDEN BY DEFAULT)
    ========================================= */
-.terminal-container {
-    margin-bottom: 60px;
-    display: none; /* Hidden by default; triggered by button */
-}
+.terminal-container { margin-bottom: 60px; display: none; }
 
 .terminal-window {
-    background-color: #0d0d0d;
-    border: 4px solid #000;
-    border-radius: 8px;
-    box-shadow: 20px 20px 0px rgba(0,0,0,0.1);
-    color: #e0e0e0;
+    background-color: #0d0d0d; border: 4px solid #000;
+    border-radius: 8px; padding: 20px; color: #e0e0e0;
     font-family: 'Courier New', monospace;
-    padding: 20px;
 }
 
-/* System Boot Sequence Animations */
+/* Boot Line Fade-In */
 .boot-line {
-    color: #666;
-    font-size: 0.85rem;
-    margin: 2px 0;
-    opacity: 0;
-    animation: fadeIn 0.1s forwards;
+    color: #666; font-size: 0.85rem; margin: 2px 0;
+    opacity: 0; animation: fadeIn 0.1s forwards;
 }
-
 .boot-line:nth-child(1) { animation-delay: 0.1s; }
 .boot-line:nth-child(2) { animation-delay: 0.2s; }
 .boot-line:nth-child(3) { animation-delay: 0.3s; }
 .boot-line:nth-child(4) { animation-delay: 0.4s; }
 
-.typewriter {
-    margin-top: 15px;
-    color: #00e5ff;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards 0.6s;
-}
+.typewriter { color: #00e5ff; opacity: 0; animation: fadeIn 0.5s forwards 0.6s; }
 
-/* Skill Bar Loading Engine */
-.skill-bar {
-    margin-top: 15px;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards 0.8s;
-}
+/* Loading Bar Logic */
+.skill-bar { margin-top: 15px; opacity: 0; animation: fadeIn 0.5s forwards 0.8s; }
+.skill-label { display: flex; justify-content: space-between; color: #00e5ff; font-weight: bold; }
 
-.skill-label {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 8px;
-    font-weight: bold;
-    color: #00e5ff; /* Unified Blue */
-}
-
-.skill-label small { color: #e0e0e0; opacity: 0.7; }
-
-.bar-background {
-    background-color: #262626;
-    height: 10px;
-    border-radius: 5px;
-    width: 100%;
-    overflow: hidden;
-}
-
+.bar-background { background-color: #262626; height: 10px; border-radius: 5px; overflow: hidden; }
 .bar-fill {
-    height: 100%;
-    width: 0%;
-    background-color: #00e5ff; 
+    height: 100%; width: 0%; background-color: #00e5ff; 
     box-shadow: 0 0 12px #00e5ff;
-    /* Uses CSS Variables passed from index.html */
     animation: loadBar var(--speed) ease-in-out forwards 1s;
 }
 
 /* =========================================
    5. PROJECTS GRID (SIDE-BY-SIDE)
    ========================================= */
-.projects-header h1 {
-    border-top: 6px solid #000;
-    padding-top: 20px;
-    margin-top: 100px;
-    font-size: 4rem;
-    letter-spacing: 5px;
-}
+.projects-header h1 { border-top: 6px solid #000; padding-top: 20px; margin-top: 100px; font-size: 4rem; }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Corrected: Two columns */
-    gap: 30px;
-    margin-top: 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 30px; margin-top: 40px;
 }
 
 .project-card {
-    border: 4px solid #000;
-    padding: 30px;
-    background-color: #fff;
-    box-shadow: 10px 10px 0px #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    border: 4px solid #000; padding: 30px; background-color: #fff;
+    box-shadow: 10px 10px 0px #000; display: flex; flex-direction: column; justify-content: space-between;
 }
 
 /* =========================================
    6. UI BUTTONS & RESPONSIVE
    ========================================= */
 .btn {
-    border: 3px solid #000;
-    padding: 10px 25px;
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    background: #fff;
-    display: inline-block;
-    transition: 0.2s;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1rem;
+    border: 3px solid #000; padding: 10px 25px; background: #fff;
+    font-weight: bold; cursor: pointer; text-decoration: none; color: #000;
 }
+.btn:hover { background: #000; color: #fff; }
 
-.btn:hover { background-color: #000; color: #fff; }
-
-/* Responsive Adjustments */
 @media (max-width: 900px) {
     .hero { flex-direction: column; align-items: center; text-align: center; }
-    .projects-grid { grid-template-columns: 1fr; } /* Stack on mobile */
+    .projects-grid { grid-template-columns: 1fr; }
     .tag.bottom { margin-left: 0; }
-    .top-nav { gap: 20px; }
 }
 
 /* =========================================
    7. ANIMATION KEYFRAMES
    ========================================= */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes loadBar {
-    from { width: 0%; }
-    to { width: var(--target-width); }
-}
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes loadBar { to { width: var(--target-width); } }
