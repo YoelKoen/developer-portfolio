@@ -1,4 +1,6 @@
-/* BASE & LAYOUT */
+/* =========================================
+   1. CORE STYLES & LAYOUT
+   ========================================= */
 html { scroll-behavior: smooth; }
 body {
     background-color: #e2ede4;
@@ -7,16 +9,23 @@ body {
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
-/* NAVIGATION */
+/* =========================================
+   2. NAVIGATION
+   ========================================= */
 .top-nav {
     position: sticky; top: 0; background-color: #e2ede4;
     padding: 25px 0; border-bottom: 5px solid #000;
     display: flex; justify-content: center; gap: 60px; z-index: 1000;
 }
-.top-nav a { text-decoration: none; color: #000; text-transform: uppercase; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
+.top-nav a { 
+    text-decoration: none; color: #000; text-transform: uppercase; 
+    font-size: 1.2rem; cursor: pointer; transition: 0.2s; 
+}
 .top-nav a:hover { color: #00e5ff; transform: translateY(-3px); }
 
-/* HERO & EDUCATION */
+/* =========================================
+   3. HERO & EDUCATION
+   ========================================= */
 .hero { display: flex; align-items: flex-start; gap: 60px; margin-top: 60px; }
 .profile-img {
     width: 280px; height: 280px; border-radius: 50%;
@@ -28,7 +37,9 @@ body {
 .education { margin-top: 45px; }
 .education h2 { font-size: 2rem; border-bottom: 4px solid #000; display: inline-block; margin-bottom: 15px; }
 
-/* TERMINAL - HIDDEN BY DEFAULT */
+/* =========================================
+   4. CYBER BLUE TERMINAL
+   ========================================= */
 .terminal-container { margin-bottom: 60px; display: none; }
 .terminal-window {
     background-color: #0d0d0d; border: 4px solid #000;
@@ -36,7 +47,10 @@ body {
     font-family: 'Courier New', monospace;
 }
 
-/* ANIMATION ENGINE */
+/* Animation Keyframes */
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes loadBar { to { width: var(--target-width); } }
+
 .boot-line { color: #666; font-size: 0.85rem; opacity: 0; animation: fadeIn 0.1s forwards; }
 .boot-line:nth-child(1) { animation-delay: 0.1s; }
 .boot-line:nth-child(2) { animation-delay: 0.2s; }
@@ -46,22 +60,29 @@ body {
 .typewriter { color: #00e5ff; opacity: 0; animation: fadeIn 0.5s forwards 0.6s; }
 .skill-bar { margin-top: 15px; opacity: 0; animation: fadeIn 0.5s forwards 0.8s; }
 .skill-label { display: flex; justify-content: space-between; color: #00e5ff; font-weight: bold; }
+
 .bar-background { background-color: #262626; height: 10px; border-radius: 5px; overflow: hidden; }
 .bar-fill {
-    height: 100%; width: 0%; background-color: #00e5ff; box-shadow: 0 0 12px #00e5ff;
+    height: 100%; width: 0%; background-color: #00e5ff; 
+    box-shadow: 0 0 12px #00e5ff;
     animation: loadBar var(--speed) ease-in-out forwards 1s;
 }
 
-@keyframes fadeIn { to { opacity: 1; } }
-@keyframes loadBar { to { width: var(--target-width); } }
-
-/* PROJECTS GRID (SIDE-BY-SIDE) */
+/* =========================================
+   5. PROJECTS GRID
+   ========================================= */
 .projects-header h1 { border-top: 6px solid #000; padding-top: 20px; margin-top: 100px; font-size: 4rem; }
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
-.project-card { border: 4px solid #000; padding: 30px; background-color: #fff; box-shadow: 10px 10px 0px #000; display: flex; flex-direction: column; justify-content: space-between; }
+.project-card { 
+    border: 4px solid #000; padding: 30px; background-color: #fff; 
+    box-shadow: 10px 10px 0px #000; display: flex; flex-direction: column; justify-content: space-between; 
+}
 
-/* BUTTONS */
-.btn { border: 3px solid #000; padding: 10px 25px; background: #fff; font-weight: bold; cursor: pointer; text-decoration: none; color: #000; font-family: inherit; }
+/* UI BUTTONS */
+.btn { 
+    border: 3px solid #000; padding: 10px 25px; background: #fff; 
+    font-weight: bold; cursor: pointer; text-decoration: none; color: #000; 
+}
 .btn:hover { background: #000; color: #fff; }
 
 @media (max-width: 900px) {
