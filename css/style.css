@@ -177,12 +177,6 @@ h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
     overflow: hidden;
 }
 
-.bar-fill {
-    height: 100%;
-    background-color: #00ff41; /* Removed % text focus */
-    transition: width 2s ease-in-out;
-}
-
 /* =========================================
    PROJECTS GRID
    ========================================= */
@@ -230,4 +224,33 @@ h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
     .projects-grid { grid-template-columns: 1fr; }
     .tag.bottom { margin-left: 0; }
     .top-nav { gap: 20px; padding: 15px 0; }
+}
+
+/* =========================================
+   ADDITIONS: MULTI-COLOR & ANIMATION LOGIC
+   ========================================= */
+
+/* Base bar fill - duration is now handled by JS */
+.bar-fill {
+    height: 100%;
+    width: 0%;
+    transition-property: width;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced glow and colors for readability */
+.green .bar-fill  { background-color: #00ff41; box-shadow: 0 0 12px #00ff41; }
+.blue .bar-fill   { background-color: #00e5ff; box-shadow: 0 0 12px #00e5ff; }
+.purple .bar-fill { background-color: #d500f9; box-shadow: 0 0 12px #d500f9; }
+.yellow .bar-fill { background-color: #ffea00; box-shadow: 0 0 12px #ffea00; }
+
+/* Dynamic Label Coloring */
+.green .skill-label  { color: #00ff41; }
+.blue .skill-label   { color: #00e5ff; }
+.purple .skill-label { color: #d500f9; }
+.yellow .skill-label { color: #ffea00; }
+
+.skill-label small {
+    color: #e0e0e0;
+    opacity: 0.8;
 }

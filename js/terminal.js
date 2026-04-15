@@ -3,13 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const terminal = document.getElementById('skills-terminal');
     const output = document.getElementById('skills-output');
 
+    // Expanded skills with unique levels and transition speeds
     const skills = [
-        { label: 'Python Core', tech: 'Django, Automation, Logic', color: 'green', level: '90%' },
-        { label: 'C# Systems', tech: 'Game Engines, Godot, .NET', color: 'blue', level: '85%' },
-        { label: 'Cloud & Ops', tech: 'Docker, Linux, Deployment', color: 'purple', level: '75%' },
-        { label: 'Data Architecture', tech: 'MariaDB, JSON Persistence, SQL', color: 'purple', level: '80%' },
-        { label: 'Frontend Engine', tech: 'HTML5, CSS3, JavaScript', color: 'yellow', level: '95%' },
-        { label: 'Documentation', tech: 'Sphinx, Markdown, Technical Writing', color: 'yellow', level: '85%' }
+        { label: 'Python Core', tech: 'Django, Automation, Logic', color: 'green', level: '92%', speed: '3s' },
+        { label: 'C# Systems', tech: 'Godot, Game Engines, .NET', color: 'blue', level: '88%', speed: '1.5s' },
+        { label: 'Cloud & Ops', tech: 'Docker, Linux, Deployment', color: 'purple', level: '70%', speed: '4s' },
+        { label: 'Data Architecture', tech: 'MariaDB, SQL, JSON', color: 'purple', level: '82%', speed: '2.5s' },
+        { label: 'Frontend Engine', tech: 'HTML5, CSS3, JavaScript', color: 'yellow', level: '96%', speed: '2s' },
+        { label: 'Documentation', tech: 'Sphinx, Markdown, Technical Writing', color: 'yellow', level: '85%', speed: '3.5s' }
     ];
 
     const sysChecks = [
@@ -21,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     triggers.forEach(t => t.addEventListener('click', (e) => {
-        // Prevent default jump for the button
         if(t.classList.contains('btn')) e.preventDefault();
         
         terminal.style.display = 'block';
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
 
     function bootSequence() {
-        // 1. Run randomized system checks first for "flavor"
+        // Run initial flavor text system checks
         sysChecks.forEach((check, i) => {
             setTimeout(() => {
                 const line = `<p style="color: #666; font-size: 0.85rem; margin: 2px 0;">${check}</p>`;
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, i * 150);
         });
 
-        // 2. Start rendering skill bars after system checks
+        // Trigger skills rendering after boot sequence
         setTimeout(() => {
             output.insertAdjacentHTML('beforeend', '<p class="typewriter" style="margin-top: 15px;">> fetching technical_competencies ...</p>');
             renderSkills();
@@ -53,11 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const html = `
                     <div class="skill-bar ${s.color}" style="margin-top: 15px;">
                         <div class="skill-label"><span>> ${s.label} <small>(${s.tech})</small></span></div>
-                        <div class="bar-background"><div class="bar-fill" id="bar-${i}"></div></div>
+                        <div class="bar-background">
+                            <div class="bar-fill" id="bar-${i}" style="width: 0%; transition-duration: ${s.speed};"></div>
+                        </div>
                     </div>`;
                 output.insertAdjacentHTML('beforeend', html);
                 
-                // Trigger the CSS transition
+                // Slight delay to ensure element is in DOM before animating width
                 setTimeout(() => {
                     const bar = document.getElementById(`bar-${i}`);
                     if(bar) bar.style.width = s.level;
