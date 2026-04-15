@@ -44,11 +44,11 @@ body {
 }
 
 .top-nav a:hover {
-    color: #00ff41; /* Terminal Green */
+    color: #00e5ff; /* Matches new Blue theme */
     transform: translateY(-3px);
 }
 
-/* KILL SWITCH: Fixes the 'things to the right' bug */
+/* KILL SWITCH: Fixes navigation bugs */
 .side-nav, .nav-line, .nav-links {
     display: none !important;
 }
@@ -74,7 +74,7 @@ section {
     border-radius: 50%;
     object-fit: cover;
     border: 6px solid #000;
-    filter: sepia(100%) hue-rotate(90deg) saturate(150%); /* Green/Cyan tint */
+    filter: sepia(100%) hue-rotate(180deg) saturate(150%); /* Adjusted for Blue tint */
 }
 
 .tag {
@@ -93,45 +93,7 @@ section {
 h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
 
 /* =========================================
-   EDUCATION SECTION
-   ========================================= */
-.education {
-    margin-top: 45px;
-}
-
-.education h2 { 
-    font-size: 2rem; 
-    margin-top: 0; 
-    border-bottom: 4px solid #000; 
-    display: inline-block; 
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
-.education p {
-    font-size: 1.25rem; /* Improved visibility for junior developer status */
-    line-height: 1.6;
-    margin: 0;
-}
-
-.education strong {
-    display: block;
-    font-size: 1.45rem; /* Bold sizing for HyperionDev */
-    margin-bottom: 4px;
-}
-
-.education a {
-    text-decoration: none;
-    transition: 0.2s;
-}
-
-.education a:hover {
-    color: #00ff41;
-    text-decoration: underline;
-}
-
-/* =========================================
-   TERMINAL & SKILLS
+   TERMINAL & SKILLS (PURE CSS LOGIC)
    ========================================= */
 .terminal-container {
     margin-bottom: 60px;
@@ -148,10 +110,33 @@ h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
     padding: 20px;
 }
 
-.terminal-body {
-    padding: 30px;
-    min-height: 300px;
-    background: #0d0d0d;
+/* System Boot Animation */
+.boot-line {
+    color: #666;
+    font-size: 0.85rem;
+    margin: 2px 0;
+    opacity: 0;
+    animation: fadeIn 0.1s forwards;
+}
+
+.boot-line:nth-child(1) { animation-delay: 0.1s; }
+.boot-line:nth-child(2) { animation-delay: 0.2s; }
+.boot-line:nth-child(3) { animation-delay: 0.3s; }
+.boot-line:nth-child(4) { animation-delay: 0.4s; }
+.boot-line:nth-child(5) { animation-delay: 0.5s; }
+
+.typewriter {
+    margin-top: 15px;
+    color: #00e5ff;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards 0.8s;
+}
+
+/* Skill Bars */
+.skill-bar {
+    margin-top: 15px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards 1s;
 }
 
 .skill-label {
@@ -160,41 +145,31 @@ h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
     padding-bottom: 8px;
     font-family: 'Courier New', monospace;
     font-weight: bold;
-    color: #00ff41; /* Classic Terminal Green */
+    color: #00e5ff; /* Unified Blue */
 }
 
-.skill-label small {
-    color: #00e5ff; /* High-visibility Cyan for tech details */
-    font-size: 0.9rem;
-}
+.skill-label small { color: #e0e0e0; opacity: 0.7; }
 
 .bar-background {
     background-color: #262626;
     height: 10px;
     border-radius: 5px;
     width: 100%;
-    margin-bottom: 20px;
     overflow: hidden;
 }
 
+.bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #00e5ff; 
+    box-shadow: 0 0 12px #00e5ff;
+    /* Uses variables passed from HTML */
+    animation: loadBar var(--speed) ease-in-out forwards 1.2s;
+}
+
 /* =========================================
-   PROJECTS GRID
+   PROJECTS & BUTTONS
    ========================================= */
-.projects-header h1 {
-    border-top: 6px solid #000;
-    padding-top: 20px;
-    margin-top: 100px; /* Space between Education and Projects */
-    font-size: 4rem;
-    letter-spacing: 5px;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 40px;
-}
-
 .project-card {
     border: 4px solid #000;
     padding: 30px;
@@ -202,16 +177,12 @@ h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
     box-shadow: 10px 10px 0px #000;
 }
 
-/* =========================================
-   BUTTONS & RESPONSIVE
-   ========================================= */
 .btn {
     border: 3px solid #000;
     padding: 10px 25px;
     text-decoration: none;
     color: #000;
     font-weight: bold;
-    margin-right: 15px;
     background: #fff;
     display: inline-block;
     transition: 0.2s;
@@ -219,38 +190,15 @@ h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
 
 .btn:hover { background-color: #000; color: #fff; }
 
-@media (max-width: 900px) {
-    .hero { flex-direction: column; align-items: center; text-align: center; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .tag.bottom { margin-left: 0; }
-    .top-nav { gap: 20px; padding: 15px 0; }
-}
-
 /* =========================================
-   ADDITIONS: MULTI-COLOR & ANIMATION LOGIC
+   ANIMATION KEYFRAMES
    ========================================= */
-
-/* Base bar fill - duration is now handled by JS */
-.bar-fill {
-    height: 100%;
-    width: 0%;
-    transition-property: width;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Enhanced glow and colors for readability */
-.green .bar-fill  { background-color: #00ff41; box-shadow: 0 0 12px #00ff41; }
-.blue .bar-fill   { background-color: #00e5ff; box-shadow: 0 0 12px #00e5ff; }
-.purple .bar-fill { background-color: #d500f9; box-shadow: 0 0 12px #d500f9; }
-.yellow .bar-fill { background-color: #ffea00; box-shadow: 0 0 12px #ffea00; }
-
-/* Dynamic Label Coloring */
-.green .skill-label  { color: #00ff41; }
-.blue .skill-label   { color: #00e5ff; }
-.purple .skill-label { color: #d500f9; }
-.yellow .skill-label { color: #ffea00; }
-
-.skill-label small {
-    color: #e0e0e0;
-    opacity: 0.8;
+@keyframes loadBar {
+    from { width: 0%; }
+    to { width: var(--target-width); }
 }

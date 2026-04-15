@@ -35,7 +35,7 @@
                     <div class="links">
                         <a href="https://github.com/YoelKoen" class="btn" target="_blank">GITHUB</a>
                         <a href="https://www.linkedin.com/in/yoel-koen-21a365398/" class="btn" target="_blank">LINKEDIN</a>
-                        <a href="#skills-terminal" class="btn trigger-skills">VIEW SKILLS</a>
+                        <a href="#skills-terminal" class="btn">VIEW SKILLS</a>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
             </div>
         </section>
 
-        <section id="skills-terminal" class="terminal-container" style="display: none;">
+        <section id="skills-terminal" class="terminal-container">
             <div class="terminal-window">
                 <div class="terminal-header">
                     <span class="control red"></span>
@@ -59,8 +59,43 @@
                     <span class="terminal-title">yoelkoen@dev-portfolio: ~</span>
                 </div>
                 <div class="terminal-body">
-                    <p class="typewriter">> loading skills ...</p>
-                    <div id="skills-output"></div>
+                    <div id="skills-output">
+                        <p class="boot-line"> [ OK ] Mounting /dev/sda1 ...</p>
+                        <p class="boot-line"> [ OK ] Initializing core.logic.engine ...</p>
+                        <p class="boot-line"> [ OK ] Establishing connection to MariaDB ...</p>
+                        <p class="boot-line"> [ OK ] Checking Docker container status ...</p>
+                        <p class="boot-line"> [ OK ] User: YoelKoen authenticated</p>
+                        
+                        <p class="typewriter">> fetching technical_competencies ...</p>
+
+                        <div class="skill-bar">
+                            <div class="skill-label"><span>> Python Core <small>(Django, Automation)</small></span></div>
+                            <div class="bar-background">
+                                <div class="bar-fill" style="--target-width: 92%; --speed: 3s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-label"><span>> C# Systems <small>(Godot, .NET)</small></span></div>
+                            <div class="bar-background">
+                                <div class="bar-fill" style="--target-width: 88%; --speed: 1.5s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-label"><span>> Cloud & Ops <small>(Docker, Linux)</small></span></div>
+                            <div class="bar-background">
+                                <div class="bar-fill" style="--target-width: 70%; --speed: 4s;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-bar">
+                            <div class="skill-label"><span>> Frontend Engine <small>(JS, HTML5, CSS3)</small></span></div>
+                            <div class="bar-background">
+                                <div class="bar-fill" style="--target-width: 96%; --speed: 2s;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -72,18 +107,17 @@
         <section class="projects-grid">
             <div class="project-card">
                 <h3>NEWS ENGINE</h3>
-                <p>A full-stack content management platform built with <strong>Django</strong>. Features include MariaDB integration, Sphinx documentation, and Docker containerization.</p>
-                <a href="https://github.com/YoelKoen/capstone-consolidation" class="btn-small" target="_blank">VIEW PROJECT</a>
+                <p>A full-stack content management platform built with <strong>Django</strong>. Features include MariaDB integration and Docker containerization.</p>
+                <a href="https://github.com/YoelKoen/capstone-consolidation" class="btn" target="_blank">VIEW PROJECT</a>
             </div>
 
             <div class="project-card">
                 <h3>STICKY NOTES</h3>
                 <p>A dynamic <strong>Django</strong> application for digital note management. Focused on clean UI and efficient backend data handling.</p>
-                <a href="https://github.com/YoelKoen/sticky-notes-project" class="btn-small" target="_blank">VIEW PROJECT</a>
+                <a href="https://github.com/YoelKoen/sticky-notes-project" class="btn" target="_blank">VIEW PROJECT</a>
             </div>
         </section>
     </main>
 
-    <script src="js/terminal.js"></script>
 </body>
 </html>
