@@ -26,11 +26,11 @@ body {
     position: sticky;
     top: 0;
     background-color: #e2ede4;
-    padding: 20px 0;
-    border-bottom: 4px solid #000;
+    padding: 25px 0;
+    border-bottom: 5px solid #000; /* Heavy Brutalist border */
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 60px;
     z-index: 1000;
 }
 
@@ -39,21 +39,26 @@ body {
     text-decoration: none;
     color: #000;
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     transition: 0.2s ease;
 }
 
 .top-nav a:hover {
-    color: #00ff41; /* Terminal Green highlight */
-    transform: translateY(-2px);
+    color: #00ff41; /* Terminal Green */
+    transform: translateY(-3px);
+}
+
+/* KILL SWITCH: Fixes the 'things to the right' bug */
+.side-nav, .nav-line, .nav-links {
+    display: none !important;
 }
 
 section {
-    scroll-margin-top: 100px; /* Prevents nav from covering titles */
+    scroll-margin-top: 120px;
 }
 
 /* =========================================
-   HERO SECTION (BRUTALIST)
+   HERO SECTION & NAME TAGS
    ========================================= */
 .hero {
     display: flex;
@@ -69,7 +74,7 @@ section {
     border-radius: 50%;
     object-fit: cover;
     border: 6px solid #000;
-    filter: sepia(100%) hue-rotate(90deg) saturate(150%); /* Cyan/Green tint */
+    filter: sepia(100%) hue-rotate(90deg) saturate(150%); /* Green/Cyan tint */
 }
 
 .tag {
@@ -86,120 +91,107 @@ section {
 .tag.bottom { margin-left: 30px; }
 
 h1 { font-size: 3rem; margin-bottom: 10px; text-transform: uppercase; }
-h2 { 
+
+/* =========================================
+   EDUCATION SECTION
+   ========================================= */
+.education {
+    margin-top: 45px;
+}
+
+.education h2 { 
     font-size: 2rem; 
-    margin-top: 30px; 
+    margin-top: 0; 
     border-bottom: 4px solid #000; 
     display: inline-block; 
     text-transform: uppercase;
+    margin-bottom: 15px;
 }
 
-.links { margin: 25px 0; }
+.education p {
+    font-size: 1.25rem; /* Improved visibility for junior developer status */
+    line-height: 1.6;
+    margin: 0;
+}
 
-.btn {
-    border: 3px solid #000;
-    padding: 10px 25px;
+.education strong {
+    display: block;
+    font-size: 1.45rem; /* Bold sizing for HyperionDev */
+    margin-bottom: 4px;
+}
+
+.education a {
     text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    margin-right: 15px;
-    background: #fff;
-    display: inline-block;
     transition: 0.2s;
-    cursor: pointer;
 }
 
-.btn:hover { background-color: #000; color: #fff; }
+.education a:hover {
+    color: #00ff41;
+    text-decoration: underline;
+}
 
 /* =========================================
-   REFINED TERMINAL V2
+   TERMINAL & SKILLS
    ========================================= */
 .terminal-container {
-    max-width: 900px;
-    margin: 50px auto;
+    margin-bottom: 60px;
 }
 
 .terminal-window {
     background-color: #0d0d0d;
-    border: 3px solid #000;
+    border: 4px solid #000;
     border-radius: 8px;
     box-shadow: 20px 20px 0px rgba(0,0,0,0.1);
-    overflow: hidden;
     color: #e0e0e0;
     font-family: 'Courier New', monospace;
     position: relative;
+    padding: 20px;
 }
 
-/* Retro CRT Effect */
-.terminal-window::before {
-    content: " ";
-    display: block;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-    z-index: 2;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
+.terminal-body {
+    padding: 30px;
+    min-height: 300px;
+    background: #0d0d0d;
 }
 
-.terminal-header {
-    background-color: #1a1a1a;
-    padding: 12px 20px;
+.skill-label {
     display: flex;
-    align-items: center;
-    border-bottom: 2px solid #333;
-}
-
-.control { height: 12px; width: 12px; border-radius: 50%; margin-right: 6px; }
-.red { background-color: #ff5f56; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #27c93f; }
-
-.terminal-body { padding: 30px; min-height: 250px; }
-
-.typewriter {
-    color: #00ff41;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    font-family: 'Courier New', monospace;
     font-weight: bold;
+    color: #00ff41; /* Classic Terminal Green */
 }
 
-/* Individual Skill Bars */
-.skill-bar { 
-    margin-bottom: 25px; 
-    opacity: 0; 
-    animation: fadeIn 0.5s forwards; 
+.skill-label small {
+    color: #00e5ff; /* High-visibility Cyan for tech details */
+    font-size: 0.9rem;
 }
-
-@keyframes fadeIn { to { opacity: 1; } }
 
 .bar-background {
     background-color: #262626;
-    height: 8px;
-    border-radius: 4px;
+    height: 10px;
+    border-radius: 5px;
     width: 100%;
+    margin-bottom: 20px;
     overflow: hidden;
 }
 
 .bar-fill {
     height: 100%;
-    width: 0;
+    background-color: #00ff41; /* Removed % text focus */
     transition: width 2s ease-in-out;
-    box-shadow: 0 0 10px currentColor;
 }
 
-.green .bar-fill { background-color: #00ff41; color: #00ff41; }
-.yellow .bar-fill { background-color: #ffb100; color: #ffb100; }
-.cyan .bar-fill { background-color: #00e5ff; color: #00e5ff; }
-
 /* =========================================
-   PROJECTS SECTION
+   PROJECTS GRID
    ========================================= */
 .projects-header h1 {
     border-top: 6px solid #000;
     padding-top: 20px;
-    margin-top: 80px;
+    margin-top: 100px; /* Space between Education and Projects */
     font-size: 4rem;
+    letter-spacing: 5px;
 }
 
 .projects-grid {
@@ -214,33 +206,28 @@ h2 {
     padding: 30px;
     background-color: #fff;
     box-shadow: 10px 10px 0px #000;
-    transition: transform 0.2s;
 }
 
-.project-card:hover {
-    transform: translate(-5px, -5px);
-    box-shadow: 15px 15px 0px #000;
-}
-
-.btn-small {
-    display: inline-block;
-    border: 2px solid #000;
-    padding: 8px 15px;
+/* =========================================
+   BUTTONS & RESPONSIVE
+   ========================================= */
+.btn {
+    border: 3px solid #000;
+    padding: 10px 25px;
     text-decoration: none;
     color: #000;
     font-weight: bold;
-    margin-top: 15px;
+    margin-right: 15px;
+    background: #fff;
+    display: inline-block;
     transition: 0.2s;
 }
 
-.btn-small:hover { background-color: #000; color: #fff; }
+.btn:hover { background-color: #000; color: #fff; }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
 @media (max-width: 900px) {
     .hero { flex-direction: column; align-items: center; text-align: center; }
     .projects-grid { grid-template-columns: 1fr; }
     .tag.bottom { margin-left: 0; }
-    .top-nav { gap: 20px; }
+    .top-nav { gap: 20px; padding: 15px 0; }
 }
