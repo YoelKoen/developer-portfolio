@@ -1,57 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Select both the primary CTA button and the top navbar link
-    const skillsTriggers = document.querySelectorAll('a[href="#skills-terminal"], .trigger-skills');
-    const terminalSection = document.getElementById('skills-terminal');
+    const triggers = document.querySelectorAll('a[href="#skills-terminal"], .trigger-skills');
+    const terminal = document.getElementById('skills-terminal');
     const output = document.getElementById('skills-output');
 
-    // Consolidated skill data with technical specializations
     const skills = [
-        { label: 'Python', tech: 'Django, Automation, Logic', color: 'green' },
-        { label: 'C#', tech: 'Game Engines, .NET, Unity/Godot', color: 'green' },
-        { label: 'Cloud & DB', tech: 'Docker, MariaDB, SQL', color: 'cyan' },
-        { label: 'Web Stack', tech: 'HTML5, CSS3, JavaScript', color: 'yellow' }
+        { label: 'Python Core', tech: 'Django, Automation, Logic', color: 'green', level: '90%' },
+        { label: 'C# Systems', tech: 'Game Engines, Godot, .NET', color: 'blue', level: '85%' },
+        { label: 'Cloud & Ops', tech: 'Docker, Linux, Deployment', color: 'purple', level: '75%' },
+        { label: 'Data Architecture', tech: 'MariaDB, JSON Persistence, SQL', color: 'purple', level: '80%' },
+        { label: 'Frontend Engine', tech: 'HTML5, CSS3, JavaScript', color: 'yellow', level: '95%' },
+        { label: 'Documentation', tech: 'Sphinx, Markdown, Technical Writing', color: 'yellow', level: '85%' }
     ];
 
-    // Initialize triggers
-    skillsTriggers.forEach(trigger => {
-        trigger.addEventListener('click', (e) => {
-            // Only prevent default if it's the button; let the nav link scroll naturally
-            if (trigger.classList.contains('btn')) {
-                e.preventDefault();
-            }
+    const sysChecks = [
+        "[ OK ] Mounting /dev/sda1 ...",
+        "[ OK ] Initializing core.logic.engine ...",
+        "[ OK ] Establishing connection to MariaDB ...",
+        "[ OK ] Checking Docker container status ...",
+        "[ OK ] User: YoelKoen authenticated"
+    ];
 
-            // 1. Ensure the terminal window is visible
-            terminalSection.style.display = 'block';
-            
-            // 2. Clear previous output for a fresh animation sequence
-            output.innerHTML = '';
+    triggers.forEach(t => t.addEventListener('click', (e) => {
+        // Prevent default jump for the button
+        if(t.classList.contains('btn')) e.preventDefault();
+        
+        terminal.style.display = 'block';
+        output.innerHTML = '';
+        terminal.scrollIntoView({ behavior: 'smooth' });
+        
+        bootSequence();
+    }));
 
-            // 3. Scroll to the section smoothly
-            terminalSection.scrollIntoView({ behavior: 'smooth' });
-
-            // 4. Start the loading sequence
-            renderSkills();
-        });
-    });
-
-    /**
-     * Renders the skill bars with a staggered typewriter-style delay
-     */
-    function renderSkills() {
-        skills.forEach((skill, index) => {
+    function bootSequence() {
+        // 1. Run randomized system checks first for "flavor"
+        sysChecks.forEach((check, i) => {
             setTimeout(() => {
-                const skillHtml = `
-                    <div class="skill-bar ${skill.color}">
-                        <div class="skill-label">
-                            <span>> ${skill.label} <small>(${skill.tech})</small></span>
-                        </div>
-                        <div class="bar-background">
-                            <div class="bar-fill" style="width: 85%"></div>
-                        </div>
-                    </div>
-                `;
-                output.insertAdjacentHTML('beforeend', skillHtml);
-            }, index * 400); // 400ms stagger between bars
+                const line = `<p style="color: #666; font-size: 0.85rem; margin: 2px 0;">${check}</p>`;
+                output.insertAdjacentHTML('beforeend', line);
+            }, i * 150);
+        });
+
+        // 2. Start rendering skill bars after system checks
+        setTimeout(() => {
+            output.insertAdjacentHTML('beforeend', '<p class="typewriter" style="margin-top: 15px;">> fetching technical_competencies ...</p>');
+            renderSkills();
+        }, sysChecks.length * 150 + 300);
+    }
+
+    function renderSkills() {
+        skills.forEach((s, i) => {
+            setTimeout(() => {
+                const html = `
+                    <div class="skill-bar ${s.color}" style="margin-top: 15px;">
+                        <div class="skill-label"><span>> ${s.label} <small>(${s.tech})</small></span></div>
+                        <div class="bar-background"><div class="bar-fill" id="bar-${i}"></div></div>
+                    </div>`;
+                output.insertAdjacentHTML('beforeend', html);
+                
+                // Trigger the CSS transition
+                setTimeout(() => {
+                    const bar = document.getElementById(`bar-${i}`);
+                    if(bar) bar.style.width = s.level;
+                }, 50);
+            }, i * 350);
         });
     }
 });
