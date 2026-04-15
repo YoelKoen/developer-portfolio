@@ -35,7 +35,7 @@
                     <div class="links">
                         <a href="https://github.com/YoelKoen" class="btn" target="_blank">GITHUB</a>
                         <a href="https://www.linkedin.com/in/yoel-koen-21a365398/" class="btn" target="_blank">LINKEDIN</a>
-                        <a href="#skills-terminal" class="btn">VIEW SKILLS</a>
+                        <button class="btn" onclick="document.getElementById('skills-terminal').style.display='block'; document.getElementById('skills-terminal').scrollIntoView({behavior: 'smooth'})">VIEW SKILLS</button>
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                     <h2>EDUCATION</h2>
                     <p>
                         <a href="https://www.hyperiondev.com/" target="_blank" style="color: inherit;"><strong>HyperionDev</strong></a> 
-                        — Software Development Bootcamp (Python, C#, & Full-Stack Web)<br>
+                        — Python Software Development Bootcamp<br>
                         <strong>National Senior Certificate</strong> — CS & Maths focus
                     </p>
                 </section>
@@ -61,22 +61,21 @@
                 <div class="terminal-body">
                     <div id="skills-output">
                         <p class="boot-line"> [ OK ] Mounting /dev/sda1 ...</p>
-                        <p class="boot-line"> [ OK ] Initializing core.logic.engine ...</p>
+                        <p class="boot-line"> [ OK ] Initializing python.core.engine ...</p>
                         <p class="boot-line"> [ OK ] Establishing connection to MariaDB ...</p>
-                        <p class="boot-line"> [ OK ] Checking Docker container status ...</p>
                         <p class="boot-line"> [ OK ] User: YoelKoen authenticated</p>
                         
                         <p class="typewriter">> fetching technical_competencies ...</p>
 
                         <div class="skill-bar">
-                            <div class="skill-label"><span>> Python Core <small>(Django, Automation)</small></span></div>
+                            <div class="skill-label"><span>> Python Core <small>(Django, Automation, Logic)</small></span></div>
                             <div class="bar-background">
                                 <div class="bar-fill" style="--target-width: 92%; --speed: 3s;"></div>
                             </div>
                         </div>
 
                         <div class="skill-bar">
-                            <div class="skill-label"><span>> C# Systems <small>(Godot, .NET)</small></span></div>
+                            <div class="skill-label"><span>> C# Systems <small>(Godot, Game Engines)</small></span></div>
                             <div class="bar-background">
                                 <div class="bar-fill" style="--target-width: 88%; --speed: 1.5s;"></div>
                             </div>
@@ -86,13 +85,6 @@
                             <div class="skill-label"><span>> Cloud & Ops <small>(Docker, Linux)</small></span></div>
                             <div class="bar-background">
                                 <div class="bar-fill" style="--target-width: 70%; --speed: 4s;"></div>
-                            </div>
-                        </div>
-
-                        <div class="skill-bar">
-                            <div class="skill-label"><span>> Frontend Engine <small>(JS, HTML5, CSS3)</small></span></div>
-                            <div class="bar-background">
-                                <div class="bar-fill" style="--target-width: 96%; --speed: 2s;"></div>
                             </div>
                         </div>
                     </div>
@@ -118,6 +110,5 @@
             </div>
         </section>
     </main>
-
 </body>
 </html>
