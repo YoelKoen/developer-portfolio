@@ -34,6 +34,16 @@ body {
 }
 .tag { background-color: #000; color: #fff; padding: 5px 20px; font-size: 1.8rem; display: inline-block; }
 .tag.bottom { margin-left: 30px; }
+
+/* FIX: Ensure the button group aligns perfectly */
+.links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    align-items: stretch; /* Forces equal height for links and buttons */
+    flex-wrap: wrap;
+}
+
 .education { margin-top: 45px; }
 .education h2 { font-size: 2rem; border-bottom: 4px solid #000; display: inline-block; margin-bottom: 15px; }
 
@@ -80,13 +90,33 @@ body {
 
 /* UI BUTTONS */
 .btn { 
-    border: 3px solid #000; padding: 10px 25px; background: #fff; 
-    font-weight: bold; cursor: pointer; text-decoration: none; color: #000; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #000; 
+    padding: 12px 25px; 
+    background: #fff; 
+    font-weight: bold; 
+    cursor: pointer; 
+    text-decoration: none; 
+    color: #000; 
+    font-family: inherit; /* Inherits Arial Black for consistent look */
+    text-transform: uppercase;
+    transition: 0.2s;
 }
-.btn:hover { background: #000; color: #fff; }
 
+.btn:hover { 
+    background: #000; 
+    color: #fff; 
+    box-shadow: 4px 4px 0px #00e5ff; /* Subtle glow on hover */
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN
+   ========================================= */
 @media (max-width: 900px) {
     .hero { flex-direction: column; align-items: center; text-align: center; }
     .projects-grid { grid-template-columns: 1fr; }
     .tag.bottom { margin-left: 0; }
+    .links { justify-content: center; }
 }
