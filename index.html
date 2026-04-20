@@ -11,7 +11,7 @@
     <nav class="top-nav">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
-        <a href="javascript:void(0)" onclick="openSkills()">Skills</a>
+        <a href="#skills-terminal" id="nav-skills">Skills</a>
     </nav>
 
     <main class="container">
@@ -35,7 +35,7 @@
                     <div class="links">
                         <a href="https://github.com/YoelKoen" class="btn" target="_blank">GITHUB</a>
                         <a href="https://www.linkedin.com/in/yoel-koen-21a365398/" class="btn" target="_blank">LINKEDIN</a>
-                        <button class="btn" onclick="openSkills()">VIEW SKILLS</button>
+                        <button class="btn" id="view-skills-btn">VIEW SKILLS</button>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
             </div>
         </section>
 
-        <section id="skills-terminal" class="terminal-container">
+        <section id="skills-terminal" class="terminal-container" style="display: none;">
             <div class="terminal-window">
                 <div class="terminal-header">
                     <span class="control red"></span>
@@ -87,13 +87,6 @@
                                 <div class="bar-fill" style="--target-width: 96%; --speed: 1.5s;"></div>
                             </div>
                         </div>
-
-                        <div class="skill-bar">
-                            <div class="skill-label"><span>> Cloud & Ops <small>(Docker, Linux, Deployment)</small></span></div>
-                            <div class="bar-background">
-                                <div class="bar-fill" style="--target-width: 70%; --speed: 3.5s;"></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -119,13 +112,19 @@
     </main>
 
     <script>
-        function openSkills() {
-            const terminal = document.getElementById('skills-terminal');
-            // Make terminal visible
+        const terminal = document.getElementById('skills-terminal');
+        const navLink = document.getElementById('nav-skills');
+        const heroBtn = document.getElementById('view-skills-btn');
+
+        function revealTerminal(e) {
+            if (e) e.preventDefault(); // Stop jumping for the nav link
             terminal.style.display = 'block';
-            // Smooth scroll to terminal
             terminal.scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Attach listeners to both triggers
+        navLink.addEventListener('click', revealTerminal);
+        heroBtn.addEventListener('click', revealTerminal);
     </script>
 </body>
 </html>
