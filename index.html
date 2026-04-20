@@ -11,7 +11,7 @@
     <nav class="top-nav">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
-        <a href="#skills-terminal">Skills</a>
+        <a href="javascript:void(0)" onclick="openSkills()">Skills</a>
     </nav>
 
     <main class="container">
@@ -35,7 +35,7 @@
                     <div class="links">
                         <a href="https://github.com/YoelKoen" class="btn" target="_blank">GITHUB</a>
                         <a href="https://www.linkedin.com/in/yoel-koen-21a365398/" class="btn" target="_blank">LINKEDIN</a>
-                        <button class="btn" onclick="document.getElementById('skills-terminal').style.display='block'; document.getElementById('skills-terminal').scrollIntoView({behavior: 'smooth'})">VIEW SKILLS</button>
+                        <button class="btn" onclick="openSkills()">VIEW SKILLS</button>
                     </div>
                 </div>
 
@@ -117,5 +117,15 @@
             </div>
         </section>
     </main>
+
+    <script>
+        function openSkills() {
+            const terminal = document.getElementById('skills-terminal');
+            // Make terminal visible
+            terminal.style.display = 'block';
+            // Smooth scroll to terminal
+            terminal.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
